@@ -1,0 +1,64 @@
+<div>
+  <form [formGroup]="profileGroup" (ngSubmit)="onSumbit()">
+    <div>
+      <label for="">
+        Ваше имя
+        <input
+          type="text"
+          name="firstname"
+          placeholder="Ваше имя"
+          formControlName="firstname"
+        />
+      </label>
+      <div
+        class="alert alert-danger"
+        *ngIf="
+          profileGroup.controls['firstname'].invalid &&
+          profileGroup.controls['email'].touched
+        "
+      >
+        Данное поле должно быть заполнено
+      </div>
+    </div>
+    <div>
+      <label for="">
+        Ваша фамилия
+        <input
+          type="text"
+          name="lastname"
+          placeholder="Ваша фамилия"
+          formControlName="lastname"
+        />
+      </label>
+      <div
+        class="alert alert-danger"
+        *ngIf="
+          profileGroup.controls['lastname'].invalid &&
+          profileGroup.controls['email'].touched
+        "
+      >
+        Данное поле должно быть заполнено
+      </div>
+    </div>
+    <div>
+      <label for="">
+        Ваша оценка
+        <input type="number" name="age" formControlName="age" />
+      </label>
+      <div
+        class="alert alert-danger"
+        *ngIf="profileGroup.controls['age'].invalid"
+      >
+        Некорректная оценка. Должена быть от 1 до 5
+      </div>
+    </div>
+    <div>
+      <button type="submit" [disabled]="!profileGroup.valid">
+        Отправить форму
+      </button>
+    </div>
+  </form>
+  <div>
+    <sub>Спасибо за ваш отзыв, ваше мнение очень важно для нас!</sub>
+  </div>
+</div>

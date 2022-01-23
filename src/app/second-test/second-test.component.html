@@ -1,0 +1,25 @@
+<h1>app-second-test</h1>
+<div>
+  <form [formGroup]="itemGroup" (ngSubmit)="addItem()">
+    <div>
+      <input
+        type="text"
+        placeholder="Введите название телефона"
+        formControlName="item"
+      />
+      <div
+        class="alert alert-danger"
+        *ngIf="
+          itemGroup.controls['item'].invalid &&
+          itemGroup.controls['item'].touched
+        "
+      >
+        Заполните название телефона
+      </div>
+    </div>
+    <button type="submit" [disabled]="!itemGroup.valid">
+      Добавить телефон
+    </button>
+  </form>
+</div>
+<h1>app-second-test</h1>

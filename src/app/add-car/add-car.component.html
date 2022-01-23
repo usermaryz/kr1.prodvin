@@ -1,0 +1,56 @@
+<div>
+    <form [formGroup]="personGroup" (ngSubmit)="create()">
+      <div>
+        <input type="text" placeholder="Введите марку" formControlName="mark" />
+        <div
+          class="alert alert-danger"
+          *ngIf="
+            personGroup.controls['mark'].invalid &&
+            personGroup.controls['mark'].touched
+          "
+        >
+          Марка 3-10 символов
+        </div>
+      </div>
+  
+      <div>
+        <input
+          type="text"
+          placeholder="Введите модель"
+          formControlName="model"
+        />
+        <div
+          class="alert alert-danger"
+          *ngIf="
+            personGroup.controls['model'].invalid &&
+            personGroup.controls['model'].touched
+          "
+        >
+          Модель 3-10 символов
+        </div>
+      </div>
+  
+      <div>
+        <input
+          type="number"
+          placeholder="Введите стоимость"
+          formControlName="cost"
+
+        />
+        <div
+          class="alert alert-danger"
+          *ngIf="
+            personGroup.controls['cost'].invalid &&
+            personGroup.controls['cost'].touched
+          "
+        >
+          5-7 символов
+        </div>
+      </div>
+      <div>
+        <button type="submit" [disabled]="!personGroup.valid">
+          Отправить форму
+        </button>
+      </div>
+    </form>
+  </div>
